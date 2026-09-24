@@ -48,8 +48,12 @@
    "Plochy železnice (#bc58ff) nemají kód ploch; vedeny jako _zeleznice (bez funkční plochy v up.geojson).",
    "Návrh = šrafa (pruhy, tečky, mřížka) barvy plochy na bílém; v up.geojson vlastnost navrh.",
    "_zamenitelne: dvojice, u nichž se v šrafě návrhu barvy prokazatelně zaměňují (OC/OS ověřeno na výřezu lokality u Litovického potoka); ostatní blízké barvy viz protokol plochy.",
-   "_linie_rastr: ÚSES (biocentra, biokoridory) jsou kresleny zelenou (funkční, barva HR/LE) a červenou (nefunkční, barva OC) čarou a trojúhelníky; útvary těchto tříd užší než 11 px (~8 m) se odstraní a doplní okolní plochou."
-  ]
+   "_linie_rastr: ÚSES (biocentra, biokoridory) jsou kresleny zelenou (funkční, barva HR/LE) a červenou (nefunkční, barva OC) čarou a trojúhelníky; útvary těchto tříd užší než 11 px (~8 m) se odstraní a doplní okolní plochou.",
+   "_prekryvy (2026-09-24): modrá (#4c4cff) = popisky a trasy sítí, ne plocha; pixely se přiřadí okolní ploše.",
+   "_linie_hustota (2026-09-24): SR a VP mají barvu čárkovaných liniových symbolů (žlutá, šedá) – práh hustoty 0,16 v okně 61 px; ostatní kódy 0,07. Měřeno: čára 0,05–0,12, šrafa 0,25–0,45, plná plocha > 0,5.",
+   "_linie OC (pás rychlostní silnice R6/R7) se vyřazuje jen při podílu tmavých pixelů < 0,2 (pás 0,06–0,10; úzký blok OC mezi ulicemi 0,36)."
+  ],
+  "datum_upravy": "2026-09-24"
  },
  "_zamenitelne": [
   [
@@ -65,5 +69,22 @@
   "OC": 5,
   "HR": 5,
   "LE": 5
- }
+ },
+ "_linie_hustota": {
+  "SR": [
+   61,
+   0.16
+  ],
+  "VP": [
+   61,
+   0.16
+  ],
+  "*": [
+   61,
+   0.07
+  ]
+ },
+ "_prekryvy": [
+  "_modra"
+ ]
 }

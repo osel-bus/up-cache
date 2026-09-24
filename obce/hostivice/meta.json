@@ -100,21 +100,29 @@
     ]
    }
   ],
-  "oprava_2026-09-24": "Parcely k. ú. Hostivice 10/2 a 1152/138 byly zapsány jako st.; k. ú. Hostivice má jednu číselnou řadu (RUIAN druhcislovanikod = 2). Geometrie kontroly nebyla dotčena."
+  "oprava_2026-09-24": "Parcely k. ú. Hostivice 10/2 a 1152/138 byly zapsány jako st.; k. ú. Hostivice má jednu číselnou řadu (RUIAN druhcislovanikod = 2). Geometrie kontroly nebyla dotčena.",
+  "regrese_2026-09-24_v2": {
+   "skripty": "overeni-pozemku 2026-09-24 (up_lookup.py s vrstvami _nejiste/_doplneno), regrese.py",
+   "sada_16": "tests/regrese_hostivice.json: OK 11, KONZERV. 5, CHYBA 0 (verze v1 cache se stejnými skripty: OK 11, KONZERV. 5, CHYBA 0)",
+   "sada_20_nezavisla": "tests/validace_hostivice.json (seed 20260925, nepoužita při ladění): OK 15, KONZERV. 5, CHYBA 0 (v1: OK 16, KONZERV. 4, CHYBA 0; v1 s původními skripty: 5 CHYBA)",
+   "300_nahodnych": "georef výsledek 161/300 (v1 150/300), žádná změna kódu mezi georef výsledky; 27 nových georef výsledků zkontrolováno výřezem: 1 pravděpodobně chybný (1323/28 Hostivice, OV místo pruhu PZ u popisku), 2 sporné (575/2 okraj ulice, 1148/5 symboly ÚSES)",
+   "potvrdil": "Claude (vizuálně) – k potvrzení Janem Kekenem"
+  }
  },
  "omezeni": [
-  "Výkres je rastrový: hranice ploch jsou z klasifikace pixelů podle barev legendy; nejistota hran cca 4.19 m se skládá s RMSE georeference do tolerance_m.",
-  "OC/OS a OS/POV mají blízké barvy a v šrafě návrhu se mohou zaměnit (legenda._zamenitelne). Polygony návrhu těchto kódů mají vlastnost podobne_kody a up_lookup.py pro ně vrací [OVĚŘIT] s kandidátem.",
-  "Garáže/dopravní vybavenost (bez kódu) mají stejnou barvu jako POV a jsou ve třídě POV.",
+  "Výkres je rastrový: hranice ploch jsou z klasifikace pixelů podle barev legendy; nejistota hran cca 4.19 m se skládá s RMSE georeference do tolerance_m. V hustých čarách katastru a pod popisky přiřazuje 2. kolo hlasování třídu z okna 21 px (až ~8 m).",
+  "OC/OS a OS/POV mají blízké barvy (legenda._zamenitelne). Kde se o nich rozhodovalo z málo čistých pixelů, je vrstva _nejiste; up_lookup.py tam vrací [OVĚŘIT] s kandidátem. Kandidát může být chybný (363/104 Litovice: kandidát OS, výkres OC).",
+  "Pod velkými popisky a silnými čarami (vrstva _doplneno, 35 ha) je plocha jen doplněná z okolí; popisek může skrývat malou plochu (např. pruh PZ). up_lookup.py vrací [OVĚŘIT] od 35 % parcely ve vrstvě. Malá plocha jen VEDLE popisku (1323/28 Hostivice, pruh u popisku PZ) zachycena není.",
+  "Garáže/dopravní vybavenost (bez kódu) mají stejnou barvu jako POV a jsou ve třídě POV. Tmavě smíšené pixely OV se mohou jevit jako POV.",
   "POV je v legendě výkresu, ale ne v textové části C/2 [OVĚŘIT regulativ].",
-  "Rychlostní silnice (dvojitá červená čára) má barvu OC; dlouhé úzké polygony OC (šířka < 30 m, délka > 300 m) byly vyřazeny (7 ks).",
-  "Symboly ÚSES mají barvu HR/LE (funkční) a OC (nefunkční); útvary těchto tříd užší než cca 8 m se odstraňují (legenda._linie_rastr). Na okrajích biocenter a biokoridorů mohou zůstat drobné zbytky (typicky desítky až stovky m²).",
-  "Plochy menší než cca 150 m² (250 px) a úzké pruhy do cca 4 m se nezachytí (šum, liniové symboly).",
+  "Pás rychlostní silnice (barva OC) se vyřazuje jako liniový symbol (6 polygonů, podíl tmavých pixelů < 0,2).",
+  "Čárkované liniové symboly barvy SR, VP a dalších kódů se vyřazují podle hustoty (legenda._linie_hustota) včetně lemu 3 px; symboly ÚSES (HR/LE/OC) navíc podle šířky (legenda._linie_rastr).",
+  "Fialový čárkovaný pás (barva železnice) se nerozlišuje od plochy železnice – zůstává jako ne-plocha (např. koridor přes LO u 1218/5 Hostivice).",
+  "Plochy menší než cca 150 m² (250 px) a úzké pruhy do cca 4 m se nezachytí.",
   "Komunikace a veřejná prostranství bez barvy plochy (bílá, šedá) a plochy železnice nejsou v up.geojson.",
   "Vlastnost navrh = plocha v šrafě (návrh/zastavitelná); rozlišení stav/návrh je orientační.",
-  "Plochy s hranicí zakreslenou jen barevnou čárou (hranice lokality změny apod.) nejsou z rastru odděleny.",
-  "Mapový podklad katastru ve výkresu je k datu zpracování ÚP; RUIAN je aktuální – u nově dělených parcel mohou hranice ÚP a KN nesouhlasit.",
-  "Test 10 náhodných parcel 2026-09-24: liniové symboly klasifikované jako SR (žlutá čárkovaná) a VP (šedá čárkovaná), velké popisky ploch jako díry, OV přesahuje do OC u 363/104 (Litovice). Viz tests/regrese_hostivice.json ve skillu overeni-pozemku."
+  "Plochy s hranicí zakreslenou jen barevnou čárou (hranice lokality změny apod.) nejsou z rastru odděleny; lokality změn (Z5-x) a rozvojové lokality nejsou v cache.",
+  "Mapový podklad katastru ve výkresu je k datu zpracování ÚP; RUIAN je aktuální – u nově dělených parcel mohou hranice ÚP a KN nesouhlasit."
  ],
  "ku_zdroj": "RUIAN, ČÚZK AGS MapServer/7 (KatastralniUzemi), dotaz 2026-09-24",
  "zdroj_vykresu_sha256": "739c59dd7abd3c03b225ca6cdd6da44d434ca8052927dbd9b20e1a2dd768c76a",
@@ -124,11 +132,11 @@
   "meritko_pdf": "cca 1:7500"
  },
  "plochy": {
-  "polygonu": 1610,
-  "pokryti_kody_podil": 0.85,
-  "neplochy_podil": 0.136,
-  "nezarazeno_podil": 0.002,
-  "vyrazene_linie_ks": 8,
+  "polygonu": 1004,
+  "pokryti_kody_podil": 0.872,
+  "neplochy_podil": 0.117,
+  "nezarazeno_podil": 0.0,
+  "vyrazene_linie_ks": 6,
   "parametry": {
    "ctol": 45.0,
    "prah": 110,
@@ -138,41 +146,104 @@
    "okoli": 11,
    "min_hlas": 0.08,
    "region": 41,
-   "podobne": 45,
+   "podobne": 45.0,
    "otevreni": 2,
    "ostrov": 600,
    "ostrov_bila": 150,
-   "vypln_px": 15,
+   "vypln_px": 15.0,
    "min_px": 250,
-   "min_m2": 20.0
+   "min_m2": 20.0,
+   "okoli2": 21,
+   "min_hlas2": 0.05,
+   "linie_tmave": 0.2,
+   "linie_halo": 3,
+   "linie_hustota": {
+    "SR": [
+     61,
+     0.16
+    ],
+    "VP": [
+     61,
+     0.16
+    ],
+    "*": [
+     61,
+     0.07
+    ]
+   },
+   "nejiste_w": 0.05,
+   "nejiste_pomer": 0.2
   },
   "plochy_ha": {
-   "OP": 341.38,
-   "LO": 118.0,
-   "VP": 99.54,
-   "OC": 91.68,
-   "OV": 76.22,
-   "ZR": 68.59,
-   "VO": 58.8,
-   "IZ": 56.47,
-   "DP": 50.68,
-   "ZPL": 50.12,
-   "NK": 39.45,
-   "ZPM": 34.15,
-   "OS": 24.22,
-   "MJ": 23.79,
-   "SR": 19.95,
-   "HR": 16.23,
-   "SZ": 15.02,
-   "PZ": 11.01,
-   "LE": 9.46,
-   "ZU": 6.78,
-   "POV": 5.54,
-   "ŠZ": 5.52,
-   "TV": 3.8,
-   "IR": 1.65,
-   "ZO": 1.17
-  }
+   "OP": 344.97,
+   "LO": 121.33,
+   "OC": 106.13,
+   "VP": 104.09,
+   "OV": 77.39,
+   "DP": 68.79,
+   "ZR": 63.11,
+   "VO": 58.59,
+   "ZPL": 53.09,
+   "IZ": 51.2,
+   "NK": 41.51,
+   "ZPM": 32.12,
+   "OS": 22.36,
+   "MJ": 20.61,
+   "HR": 16.57,
+   "PZ": 16.36,
+   "SZ": 15.21,
+   "LE": 14.15,
+   "SR": 8.29,
+   "ZU": 6.96,
+   "ŠZ": 6.04,
+   "POV": 5.64,
+   "TV": 4.06,
+   "IR": 1.54,
+   "ZO": 0.95
+  },
+  "nejiste_ha": {
+   "OS/POV": 10.87,
+   "OC/OS": 7.11
+  },
+  "doplneno_ha": 35.34,
+  "linie_hustota_vyrazeno_px": {
+   "SR": 103245,
+   "VP": 350386,
+   "VO": 59065,
+   "OC": 68114,
+   "OV": 30722,
+   "POV": 218685,
+   "OS": 152970,
+   "MJ": 70332,
+   "NK": 28364,
+   "ŠZ": 428561,
+   "IR": 14658,
+   "TV": 84264,
+   "DP": 195206,
+   "ZU": 35124,
+   "PZ": 125862,
+   "IZ": 19545,
+   "HR": 18304,
+   "SZ": 60067,
+   "LE": 81820,
+   "LO": 47010,
+   "ZO": 162564,
+   "OP": 122638,
+   "ZPM": 55922,
+   "ZPL": 106443,
+   "ZR": 18120
+  },
+  "prekryvy_px": 202816,
+  "verze": "2026-09-24 v2 (přetrénování po testu 10 náhodných parcel)"
  },
- "zdroj_pdf_v_repozitari": "zdroj/ je v .gitignore (34,6 MB); PDF ověř proti sha256 nebo stáhni ze zdroj_vykresu"
+ "zdroj_pdf_v_repozitari": "zdroj/ je v .gitignore (34,6 MB); PDF ověř proti sha256 nebo stáhni ze zdroj_vykresu",
+ "pomocne_vrstvy": {
+  "soubor": "up_pomocne.geojson",
+  "vrstvy": {
+   "_nejiste": "slabé rozhodnutí mezi zaměnitelnými barvami (legenda._zamenitelne)",
+   "_doplneno": "pod tlustými tmavými tahy (popisky, silné čáry)"
+  },
+  "vyzaduje": "up_lookup.py ze skillu overeni-pozemku verze 2026-09-24 v2 nebo novější (starší verze vrstvy ignoruje a nehlásí slabá místa)"
+ },
+ "min_verze_skillu": "overeni-pozemku 2026-09-24 v2"
 }
