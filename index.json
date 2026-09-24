@@ -1,1 +1,12 @@
-{"obce": []}
+{
+ "obce": [
+  {
+   "slug": "hostivice",
+   "nazev": "Hostivice",
+   "ku": [
+    645834,
+    645842
+   ]
+  }
+ ]
+}

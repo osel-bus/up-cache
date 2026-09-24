@@ -1,0 +1,69 @@
+{
+ "VO": "#8effff",
+ "OC": "#ff4c4c",
+ "OV": "#ff824c",
+ "POV": "#c1744c",
+ "OS": "#dc5858",
+ "MJ": "#ff4cbe",
+ "NK": "#db8dff",
+ "ŠZ": [
+  "#e0b88a",
+  "#cc9a85"
+ ],
+ "SR": "#ffff4c",
+ "IR": "#ffd94c",
+ "VP": "#c1c1c1",
+ "TV": "#afc4df",
+ "DP": "#e3ccc1",
+ "ZU": "#d4d44c",
+ "PZ": "#dbffa7",
+ "IZ": "#4cff9a",
+ "HR": "#4cff4c",
+ "SZ": "#9ccc4c",
+ "LE": "#52ce4c",
+ "LO": "#deff5a",
+ "ZO": "#b7d6a8",
+ "OP": "#f8edae",
+ "ZPM": "#9cfe9c",
+ "ZPL": "#73cdaa",
+ "ZR": "#a8ff58",
+ "_neplochy": {
+  "_bila": "#ffffff",
+  "_zeleznice": "#bc58ff",
+  "_komunikace": "#d4d4d4",
+  "_cerna": "#4c4c4c",
+  "_modra": "#4c4cff"
+ },
+ "_linie": {
+  "OC": "rychlostní silnice (dvojitá červená čára) má barvu OC (#f84c4c)"
+ },
+ "_zdroj": {
+  "vykres": "03_HLV_UZ_UPO_Hostivice_po_Z5_09-2022.pdf, legenda vpravo nahoře",
+  "metoda": "georef_upo.py vzorek: medián jádrových pixelů políčka legendy (sloupec stav) v rastru 250 dpi; ŠZ druhá barva = sloupec návrh (šrafa má jinou barvu než stav) a ověřeno v mapě u vektorových popisků ŠZ",
+  "datum": "2026-09-24",
+  "pozn": [
+   "HR = v legendě HŘ (hřbitovy).",
+   "POV (plocha občanského vybavení) je v legendě výkresu, v textové části C/2 (regulativy.md) není [OVĚŘIT].",
+   "Garáže, dopravní vybavenost (bez kódu) mají v legendě stejnou barvu jako POV (#c3734c) – v rastru nerozlišitelné, třída POV je zahrnuje.",
+   "Plochy železnice (#bc58ff) nemají kód ploch; vedeny jako _zeleznice (bez funkční plochy v up.geojson).",
+   "Návrh = šrafa (pruhy, tečky, mřížka) barvy plochy na bílém; v up.geojson vlastnost navrh.",
+   "_zamenitelne: dvojice, u nichž se v šrafě návrhu barvy prokazatelně zaměňují (OC/OS ověřeno na výřezu lokality u Litovického potoka); ostatní blízké barvy viz protokol plochy.",
+   "_linie_rastr: ÚSES (biocentra, biokoridory) jsou kresleny zelenou (funkční, barva HR/LE) a červenou (nefunkční, barva OC) čarou a trojúhelníky; útvary těchto tříd užší než 11 px (~8 m) se odstraní a doplní okolní plochou."
+  ]
+ },
+ "_zamenitelne": [
+  [
+   "OC",
+   "OS"
+  ],
+  [
+   "OS",
+   "POV"
+  ]
+ ],
+ "_linie_rastr": {
+  "OC": 5,
+  "HR": 5,
+  "LE": 5
+ }
+}

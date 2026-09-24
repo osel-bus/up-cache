@@ -1,0 +1,176 @@
+{
+ "upd": "Územní plán obce Hostivice, úplné znění po vydání změn č. 2 a 5",
+ "upd_stav_ke_dni": "2026-09-24",
+ "ucinnost_posledni_zmeny": "2022-09-30",
+ "poznamka_platnost": "Nový ÚP Hostivice v pořizování (návrh pro veřejné projednání 05/2024), ke dni ověření nevydán [OVĚŘIT u pořizovatele].",
+ "ku": {
+  "Hostivice": 645834,
+  "Litovice": 645842
+ },
+ "zdroj_textu": "https://up.mestocernosice.cz/platne/Hostivice/01_Textova_cast_UZ_UPO_Hostivice_po_Z5_09-2022.pdf",
+ "zdroj_vykresu": "https://up.mestocernosice.cz/platne/Hostivice/03_HLV_UZ_UPO_Hostivice_po_Z5_09-2022.pdf",
+ "georef": {
+  "metoda": "georef_upo.py rastr: počáteční transformace z GeoPDF, zpřesnění afinní MNČ na vlícovacích bodech z chamferu hranic parcel RUIAN (vrstva 5) proti čarám katastru v rastru",
+  "rmse_m": 1.26,
+  "max_rezidua_m": 2.83,
+  "inliery": 34,
+  "dlazdic_prijato": 36,
+  "dlazdic_celkem": 111,
+  "posun_vuci_geopdf_median_m": 1.78,
+  "tolerance_klasifikace_m": 4.19,
+  "tolerance_m": 4.4,
+  "tolerance_pozn": "tolerance_m = sqrt(RMSE² + tolerance_klasifikace²); up_lookup.py zmenšuje parcelu o tolerance_m",
+  "datum": "2026-09-24"
+ },
+ "kontrola": {
+  "datum": "2026-09-24",
+  "metoda": "ruian.py + up_lookup.py, výřez hlavního výkresu s obrysem parcely z RUIAN, vizuální porovnání",
+  "potvrdil": "Jan Keken (vizuálně, všech 6 výřezů)",
+  "vysledek": "shoda ve všech 6 případech; obrysy parcel RUIAN sedí na čáry katastru ve výkresu",
+  "parcely": [
+   {
+    "parcela": "st. 17",
+    "ku": 645842,
+    "status": "VÝKRES ÚP (georef)",
+    "funkcni_plocha": "OV",
+    "navrh": false,
+    "podily": {
+     "OV": 0.9904
+    },
+    "dotcene_plochy": null
+   },
+   {
+    "parcela": "357/31",
+    "ku": 645842,
+    "status": "VÝKRES ÚP (georef)",
+    "funkcni_plocha": "OC",
+    "navrh": false,
+    "podily": {
+     "OC": 1.0
+    },
+    "dotcene_plochy": null
+   },
+   {
+    "parcela": "st. 10/2",
+    "ku": 645834,
+    "status": "VÝKRES ÚP (georef)",
+    "funkcni_plocha": "MJ",
+    "navrh": false,
+    "podily": {
+     "MJ": 1.0
+    },
+    "dotcene_plochy": null
+   },
+   {
+    "parcela": "405/2",
+    "ku": 645834,
+    "status": "VÝKRES ÚP (georef)",
+    "funkcni_plocha": "ŠZ",
+    "navrh": false,
+    "podily": {
+     "ŠZ": 0.9927,
+     "SR": 0.0
+    },
+    "dotcene_plochy": null
+   },
+   {
+    "parcela": "st. 1152/138",
+    "ku": 645834,
+    "status": "VÝKRES ÚP (georef)",
+    "funkcni_plocha": "VP",
+    "navrh": true,
+    "podily": {
+     "VP": 1.0
+    },
+    "dotcene_plochy": null
+   },
+   {
+    "parcela": "360/2",
+    "ku": 645842,
+    "status": "[OVĚŘIT]",
+    "funkcni_plocha": null,
+    "navrh": null,
+    "podily": {
+     "NK": 0.9628,
+     "OC": 0.0081
+    },
+    "dotcene_plochy": [
+     "OC",
+     "NK"
+    ]
+   }
+  ]
+ },
+ "omezeni": [
+  "Výkres je rastrový: hranice ploch jsou z klasifikace pixelů podle barev legendy; nejistota hran cca 4.19 m se skládá s RMSE georeference do tolerance_m.",
+  "OC/OS a OS/POV mají blízké barvy a v šrafě návrhu se mohou zaměnit (legenda._zamenitelne). Polygony návrhu těchto kódů mají vlastnost podobne_kody a up_lookup.py pro ně vrací [OVĚŘIT] s kandidátem.",
+  "Garáže/dopravní vybavenost (bez kódu) mají stejnou barvu jako POV a jsou ve třídě POV.",
+  "POV je v legendě výkresu, ale ne v textové části C/2 [OVĚŘIT regulativ].",
+  "Rychlostní silnice (dvojitá červená čára) má barvu OC; dlouhé úzké polygony OC (šířka < 30 m, délka > 300 m) byly vyřazeny (7 ks).",
+  "Symboly ÚSES mají barvu HR/LE (funkční) a OC (nefunkční); útvary těchto tříd užší než cca 8 m se odstraňují (legenda._linie_rastr). Na okrajích biocenter a biokoridorů mohou zůstat drobné zbytky (typicky desítky až stovky m²).",
+  "Plochy menší než cca 150 m² (250 px) a úzké pruhy do cca 4 m se nezachytí (šum, liniové symboly).",
+  "Komunikace a veřejná prostranství bez barvy plochy (bílá, šedá) a plochy železnice nejsou v up.geojson.",
+  "Vlastnost navrh = plocha v šrafě (návrh/zastavitelná); rozlišení stav/návrh je orientační.",
+  "Plochy s hranicí zakreslenou jen barevnou čárou (hranice lokality změny apod.) nejsou z rastru odděleny.",
+  "Mapový podklad katastru ve výkresu je k datu zpracování ÚP; RUIAN je aktuální – u nově dělených parcel mohou hranice ÚP a KN nesouhlasit."
+ ],
+ "ku_zdroj": "RUIAN, ČÚZK AGS MapServer/7 (KatastralniUzemi), dotaz 2026-09-24",
+ "zdroj_vykresu_sha256": "739c59dd7abd3c03b225ca6cdd6da44d434ca8052927dbd9b20e1a2dd768c76a",
+ "vykres": {
+  "typ": "rastr (Esri ArcMap 10.8.1, plochy vypáleny do obrázku ~250 dpi, vektorově jen část liniových prvků)",
+  "georeference_v_pdf": "GeoPDF /Measure /GEO, S-JTSK (GPTS v datumu S-JTSK, EPSG:4156)",
+  "meritko_pdf": "cca 1:7500"
+ },
+ "plochy": {
+  "polygonu": 1610,
+  "pokryti_kody_podil": 0.85,
+  "neplochy_podil": 0.136,
+  "nezarazeno_podil": 0.002,
+  "vyrazene_linie_ks": 8,
+  "parametry": {
+   "ctol": 45.0,
+   "prah": 110,
+   "srafa_okno": 31,
+   "srafa_prechody": 3.0,
+   "jadro": 2,
+   "okoli": 11,
+   "min_hlas": 0.08,
+   "region": 41,
+   "podobne": 45,
+   "otevreni": 2,
+   "ostrov": 600,
+   "ostrov_bila": 150,
+   "vypln_px": 15,
+   "min_px": 250,
+   "min_m2": 20.0
+  },
+  "plochy_ha": {
+   "OP": 341.38,
+   "LO": 118.0,
+   "VP": 99.54,
+   "OC": 91.68,
+   "OV": 76.22,
+   "ZR": 68.59,
+   "VO": 58.8,
+   "IZ": 56.47,
+   "DP": 50.68,
+   "ZPL": 50.12,
+   "NK": 39.45,
+   "ZPM": 34.15,
+   "OS": 24.22,
+   "MJ": 23.79,
+   "SR": 19.95,
+   "HR": 16.23,
+   "SZ": 15.02,
+   "PZ": 11.01,
+   "LE": 9.46,
+   "ZU": 6.78,
+   "POV": 5.54,
+   "ŠZ": 5.52,
+   "TV": 3.8,
+   "IR": 1.65,
+   "ZO": 1.17
+  }
+ },
+ "zdroj_pdf_v_repozitari": "zdroj/ je v .gitignore (34,6 MB); PDF ověř proti sha256 nebo stáhni ze zdroj_vykresu"
+}
