@@ -51,7 +51,7 @@
     "dotcene_plochy": null
    },
    {
-    "parcela": "st. 10/2",
+    "parcela": "10/2",
     "ku": 645834,
     "status": "VÝKRES ÚP (georef)",
     "funkcni_plocha": "MJ",
@@ -74,7 +74,7 @@
     "dotcene_plochy": null
    },
    {
-    "parcela": "st. 1152/138",
+    "parcela": "1152/138",
     "ku": 645834,
     "status": "VÝKRES ÚP (georef)",
     "funkcni_plocha": "VP",
@@ -99,7 +99,8 @@
      "NK"
     ]
    }
-  ]
+  ],
+  "oprava_2026-09-24": "Parcely k. ú. Hostivice 10/2 a 1152/138 byly zapsány jako st.; k. ú. Hostivice má jednu číselnou řadu (RUIAN druhcislovanikod = 2). Geometrie kontroly nebyla dotčena."
  },
  "omezeni": [
   "Výkres je rastrový: hranice ploch jsou z klasifikace pixelů podle barev legendy; nejistota hran cca 4.19 m se skládá s RMSE georeference do tolerance_m.",
@@ -112,7 +113,8 @@
   "Komunikace a veřejná prostranství bez barvy plochy (bílá, šedá) a plochy železnice nejsou v up.geojson.",
   "Vlastnost navrh = plocha v šrafě (návrh/zastavitelná); rozlišení stav/návrh je orientační.",
   "Plochy s hranicí zakreslenou jen barevnou čárou (hranice lokality změny apod.) nejsou z rastru odděleny.",
-  "Mapový podklad katastru ve výkresu je k datu zpracování ÚP; RUIAN je aktuální – u nově dělených parcel mohou hranice ÚP a KN nesouhlasit."
+  "Mapový podklad katastru ve výkresu je k datu zpracování ÚP; RUIAN je aktuální – u nově dělených parcel mohou hranice ÚP a KN nesouhlasit.",
+  "Test 10 náhodných parcel 2026-09-24: liniové symboly klasifikované jako SR (žlutá čárkovaná) a VP (šedá čárkovaná), velké popisky ploch jako díry, OV přesahuje do OC u 363/104 (Litovice). Viz tests/regrese_hostivice.json ve skillu overeni-pozemku."
  ],
  "ku_zdroj": "RUIAN, ČÚZK AGS MapServer/7 (KatastralniUzemi), dotaz 2026-09-24",
  "zdroj_vykresu_sha256": "739c59dd7abd3c03b225ca6cdd6da44d434ca8052927dbd9b20e1a2dd768c76a",
